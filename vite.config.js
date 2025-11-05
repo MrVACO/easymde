@@ -1,18 +1,19 @@
-import {defineConfig} from 'vite';
-export default defineConfig({
-    build: {
-        emptyOutDir: false,
-        rollupOptions: {
-            input: ['resources/js/easymde.js', "resources/css/easymde.css"],
-          output: {
-            entryFileNames: `easymde.js`,
-            assetFileNames: file => {
-              let ext = file.name.split('.').pop()
+import { defineConfig } from 'vite';
+import tailwindcss from "@tailwindcss/vite";
 
-              return '[name].[ext]'
-            }
-          }
-        },
-        outDir: 'public',
-    },
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+  ],
+  build: {
+    emptyOutDir: false,
+    rollupOptions: {
+      input: ['resources/js/easymde.js', "resources/css/easymde.css"],
+      output: {
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`
+      }
+    }
+  }
 });
