@@ -1,5 +1,6 @@
 import EasyMDE from "easymde";
 import DOMPurify from 'dompurify';
+import '../css/easymde.css';
 
 document.addEventListener('alpine:init', () => {
   Alpine.data('easyMde', (options = {}) => ({

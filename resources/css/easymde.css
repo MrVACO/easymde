@@ -1,127 +1,122 @@
-@import "tailwindcss";
 @import 'easymde/dist/easymde.min.css';
 
-@source '../**/*.blade.php';
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme inline {
-  --color-body: var(--body, oklch(1 0 0));
-
-  --color-primary: var(--primary, oklch(0 0 0));
-  --color-primary-text: var(--primary-text, oklch(1 0 0));
-  --color-secondary: var(--secondary, oklch(0.92 0 0));
-  --color-secondary-text: var(--secondary-text, oklch(0 0 0));
-
-  --color-base-stroke: var(--base-stroke, oklch(0 0 0 / 10%));
-  --color-base-text: var(--base-text, oklch(0.21 0.006 285.885));
-
-  --color-base: var(--base-default, oklch(1 0 0));
-  --color-base-50: var(--base-50, oklch(0.985 0 0));
-  --color-base-100: var(--base-100, oklch(0.97 0 0));
-  --color-base-200: var(--base-200, oklch(0.955 0 0));
-  --color-base-300: var(--base-300, oklch(0.94 0 0));
-  --color-base-400: var(--base-400, oklch(0.925 0 0));
-  --color-base-500: var(--base-500, oklch(0.91 0 0));
-  --color-base-600: var(--base-600, oklch(0.895 0 0));
-  --color-base-700: var(--base-700, oklch(0.88 0 0));
-  --color-base-800: var(--base-800, oklch(0.865 0 0));
-  --color-base-900: var(--base-900, oklch(0.85 0 0));
-
-  --color-error: var(--error-bg, oklch(0.58 0.21 26.855));
-  --color-error-text: var(--error-text, oklch(0.37 0.145 26.85));
-}
-
-@variant dark {
-  --color-body: var(--body, oklch(0.2 0.0168 274.32));
-
-  --color-primary: var(--primary, oklch(1 0 0));
-  --color-primary-text: var(--primary-text, oklch(0 0 0));
-  --color-secondary: var(--secondary, oklch(0.8 0 0));
-  --color-secondary-text: var(--secondary-text, oklch(0 0 0));
-
-  --color-base-stroke: var(--base-stroke, oklch(1 0 0 / 10%));
-  --color-base-text: var(--base-text, oklch(0.87 0.01 258.34));
-
-  --color-base: var(--base-default, oklch(0.24 0.0168 274.32));
-  --color-base-50: var(--base-50, oklch(0.255 0.017 274.32));
-  --color-base-100: var(--base-100, oklch(0.27 0.017 274.32));
-  --color-base-200: var(--base-200, oklch(0.285 0.018 274.32));
-  --color-base-300: var(--base-300, oklch(0.3 0.019 274.32));
-  --color-base-400: var(--base-400, oklch(0.315 0.02 274.32));
-  --color-base-500: var(--base-500, oklch(0.33 0.021 274.32));
-  --color-base-600: var(--base-600, oklch(0.345 0.022 274.32));
-  --color-base-700: var(--base-700, oklch(0.36 0.023 274.32));
-  --color-base-800: var(--base-800, oklch(0.375 0.024 274.32));
-  --color-base-900: var(--base-900, oklch(0.39 0.025 274.32));
-
-  --color-error: var(--error-bg, oklch(0.589 0.214 26.855));
-  --color-error-text: var(--error-text, oklch(0.71 0.24 25.96));
-}
-
 .easyMde {
-  @apply relative rounded-md border border-base-stroke overflow-hidden;
+  position: relative;
+  border: 1px solid var(--base-stroke);
+  border-radius: var(--ms-form-default-radius);
+  overflow: hidden;
 
   &:has(.form-invalid) {
-    @apply border-error;
+    border: 1px solid var(--error-bg);
   }
 
   &:has(.CodeMirror-focused) {
-    @apply ring ring-base-stroke/70 dark:ring-base-stroke/30;
+    box-shadow: 0 0 0 3px rgb(var(--base-stroke) / 0.7);
   }
 
   &:has(.form-invalid):has(.CodeMirror-focused) {
-    @apply ring-error/20 dark:ring-error/40;
+    box-shadow: 0 0 0 3px rgb(var(--error-bg) / 0.2);
   }
 
   & > textarea {
-    @apply absolute block h-full w-full opacity-0;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
   }
 
   .editor-toolbar {
-    @apply flex flex-wrap items-center gap-x-px dark:bg-base-200 border-0 border-b border-base-stroke;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1px;
+    border: 0;
+    border-bottom: 1px solid var(--base-stroke);
+    background-color: var(--ms-layout-page-bg-color, var(--color-base));
 
     button {
       &.active {
-        @apply border-transparent bg-base-300 dark:bg-base-400 dark:hover:bg-base-500 text-base-text;
+        border-color: transparent;
+        background-color: var(--base-300);
+        color: var(--base-text);
       }
 
       &:hover {
-        @apply border-base-stroke bg-base-300;
+        border: 1px solid var(--base-stroke);
+        background-color: var(--base-300);
       }
     }
 
     i.separator {
-      @apply border-base-stroke;
-    }
-
-    &.fullscreen {
-      @apply rounded-none border-b border-solid border-base-stroke;
+      border: 1px solid var(--base-stroke);
     }
   }
 
   .prose {
-    @apply max-w-full bg-body p-4;
-  }
-
-  .CodeMirror {
-    @apply bg-body border-none;
-
-    .CodeMirror-line {
-      @apply text-base-text;
-    }
-
-    .CodeMirror-cursor {
-      @apply border-l-base-text;
-    }
+    max-width: 100%;
+    background: var(--body);
+    padding: var(--ms-box-padding-x);
+    color: var(--base-text);
   }
 
   .editor-preview-side {
-    @apply dark:border-base-300;
+    border: none;
+    border-left: 1px solid var(--base-300);
+    background-color: var(--body);
   }
 
   .editor-toolbar.fullscreen,
   .CodeMirror-fullscreen {
-    @apply z-[150];
+    z-index: 150;
+  }
+
+  .CodeMirror, .CodeMirror-fullscreen {
+    background: var(--body);
+    border: 0;
+  }
+
+  .CodeMirror-selected,
+  .CodeMirror-focused .CodeMirror-selected {
+    background-color: var(--base-500);
+  }
+
+  .CodeMirror-line {
+    color: var(--base-text);
+  }
+
+  .CodeMirror-cursor {
+    border: 0;
+    border-left: 1px solid var(--base-text);
+  }
+}
+
+[class=dark] {
+  .easyMde {
+    &:has(.CodeMirror-focused) {
+      box-shadow: 0 0 0 3px rgb(var(--base-stroke) / 0.3);
+    }
+
+    &:has(.form-invalid):has(.CodeMirror-focused) {
+      box-shadow: 0 0 0 3px rgb(var(--error-bg) / 0.4);
+    }
+
+    .editor-toolbar {
+      background-color: var(--base-200);
+
+      button {
+        &.active {
+          background-color: var(--base-400);
+        }
+
+        &:hover {
+          background-color: var(--base-500);
+        }
+      }
+    }
+
+    .CodeMirror-line {
+      color: var(--base-text);
+    }
   }
 }
