@@ -2,20 +2,20 @@
 
 .easyMde {
   position: relative;
-  border: 1px solid var(--base-stroke);
+  border: 1px solid var(--ms-cm-base-stroke);
   border-radius: var(--ms-form-default-radius);
   overflow: hidden;
 
   &:has(.form-invalid) {
-    border: 1px solid var(--error-bg);
+    border: 1px solid var(--ms-cm-error);
   }
 
   &:has(.CodeMirror-focused) {
-    box-shadow: 0 0 0 3px rgb(var(--base-stroke) / 0.7);
+    box-shadow: 0 0 0 3px rgb(var(--ms-cm-base-stroke) / 0.7);
   }
 
   &:has(.form-invalid):has(.CodeMirror-focused) {
-    box-shadow: 0 0 0 3px rgb(var(--error-bg) / 0.2);
+    box-shadow: 0 0 0 3px rgb(var(--ms-cm-error) / 0.2);
   }
 
   & > textarea {
@@ -32,38 +32,38 @@
     align-items: center;
     gap: 0 1px;
     border: 0;
-    border-bottom: 1px solid var(--base-stroke);
-    background-color: var(--ms-layout-page-bg-color, var(--color-base));
+    border-bottom: 1px solid var(--ms-cm-base-stroke);
+    background-color: var(--ms-cm-body);
 
     button {
       &.active {
         border-color: transparent;
-        background-color: var(--base-300);
-        color: var(--base-text);
+        background-color: var(--ms-cm-base-300);
+        color: var(--ms-cm-base-text);
       }
 
       &:hover {
-        border: 1px solid var(--base-stroke);
-        background-color: var(--base-300);
+        border: 1px solid var(--ms-cm-base-stroke);
+        background-color: var(--ms-cm-base-300);
       }
     }
 
     i.separator {
-      border: 1px solid var(--base-stroke);
+      border: 1px solid var(--ms-cm-base-stroke);
     }
   }
 
   .prose {
     max-width: 100%;
-    background: var(--body);
+    background: var(--ms-cm-body);
     padding: var(--ms-box-padding-x);
-    color: var(--base-text);
+    color: var(--ms-cm-base-text);
   }
 
   .editor-preview-side {
     border: none;
-    border-left: 1px solid var(--base-300);
-    background-color: var(--body);
+    border-left: 1px solid var(--ms-cm-base-300);
+    background-color: var(--ms-cm-body);
   }
 
   .editor-toolbar.fullscreen,
@@ -72,51 +72,51 @@
   }
 
   .CodeMirror, .CodeMirror-fullscreen {
-    background: var(--body);
+    background: var(--ms-cm-body);
     border: 0;
   }
 
   .CodeMirror-selected,
   .CodeMirror-focused .CodeMirror-selected {
-    background-color: var(--base-500);
+    background-color: var(--ms-cm-base-500);
   }
 
   .CodeMirror-line {
-    color: var(--base-text);
+    color: var(--ms-cm-base-text);
   }
 
   .CodeMirror-cursor {
     border: 0;
-    border-left: 1px solid var(--base-text);
+    border-left: 1px solid var(--ms-cm-base-text);
   }
 }
 
 [class=dark] {
   .easyMde {
     &:has(.CodeMirror-focused) {
-      box-shadow: 0 0 0 3px rgb(var(--base-stroke) / 0.3);
+      box-shadow: 0 0 0 3px rgb(var(--ms-cm-base-stroke) / 0.3);
     }
 
     &:has(.form-invalid):has(.CodeMirror-focused) {
-      box-shadow: 0 0 0 3px rgb(var(--error-bg) / 0.4);
+      box-shadow: 0 0 0 3px rgb(var(--ms-cm-error) / 0.4);
     }
 
     .editor-toolbar {
-      background-color: var(--base-200);
+      background-color: var(--ms-cm-base-200);
 
       button {
         &.active {
-          background-color: var(--base-400);
+          background-color: var(--ms-cm-base-400);
         }
 
         &:hover {
-          background-color: var(--base-500);
+          background-color: var(--ms-cm-base-500);
         }
       }
     }
 
     .CodeMirror-line {
-      color: var(--base-text);
+      color: var(--ms-cm-base-text);
     }
   }
 }
