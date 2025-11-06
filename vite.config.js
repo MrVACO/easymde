@@ -1,18 +1,20 @@
-import {defineConfig} from 'vite';
-export default defineConfig({
-    build: {
-        emptyOutDir: false,
-        rollupOptions: {
-            input: ['resources/js/easymde.js', "resources/css/easymde.css"],
-          output: {
-            entryFileNames: `easymde.js`,
-            assetFileNames: file => {
-              let ext = file.name.split('.').pop()
+import { defineConfig } from 'vite';
 
-              return '[name].[ext]'
-            }
-          }
-        },
-        outDir: 'public',
+export default defineConfig({
+  build: {
+    lib: {
+      entry: 'resources/js/easymde.js',
+      name: 'EasyMDEPlugin',
+      formats: ['iife'],
+      fileName: 'easymde',
     },
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        entryFileNames: `[name].js`,
+        chunkFileNames: `[name].js`,
+        assetFileNames: `[name].[ext]`
+      }
+    }
+  }
 });

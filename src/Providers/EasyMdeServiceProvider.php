@@ -22,7 +22,7 @@ final class EasyMdeServiceProvider extends ServiceProvider
         );
 
         $this->publishes([
-            __DIR__ . '/../../public' => public_path('vendor/moonshine-easymde'),
+            __DIR__ . '/../../dist' => public_path('vendor/moonshine-easymde'),
         ], ['moonshine-easymde-assets', 'laravel-assets']);
     }
 }

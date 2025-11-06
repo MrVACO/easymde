@@ -12,11 +12,13 @@ Extends [Textarea](https://moonshine-laravel.com/docs/resource/fields/fields-tex
 
 ## Compatibility
 
-|      MoonShine       | Moonshine EasyMDE | Currently supported |
-|:--------------------:|:-----------------:|:-------------------:|
-|       >= v3.0        |     >= v1.0.0     |         yes         |
+| MoonShine | Moonshine EasyMDE | Currently supported |
+|:---------:|:-----------------:|:-------------------:|
+|  >= v3.0  |     >= v1.0.0     |         yes         |
+|  >= v4.0  |     >= v2.0.0     |         yes         |
 
 ## Installation
+
 ```shell
 composer require moonshine/easymde
 ```
@@ -62,6 +64,7 @@ The `toolbar()` method allows you to completely override toolbar for a field
 ```php
 toolbar(string|bool|array $toolbar)
 ```
+
 ```php
 Markdown::make('Description')
     ->toolbar(['bold', 'italic', 'strikethrough', 'code', 'quote', 'horizontal-rule'])
@@ -74,6 +77,7 @@ The `addOption()` method allows you to add additional options for a field
 ```php
 addOption(string $name, string|int|float|bool|array $value)
 ```
+
 ```php
 Markdown::make('Description')
     ->addOption('toolbar', ['bold', 'italic', 'strikethrough', 'code', 'quote', 'horizontal-rule'])

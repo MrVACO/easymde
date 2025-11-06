@@ -1,65 +1,122 @@
 @import 'easymde/dist/easymde.min.css';
 
 .easyMde {
-  @apply relative rounded-md border border-gray-300 dark:border-dark-300 overflow-hidden;
+  position: relative;
+  border: 1px solid var(--ms-cm-base-stroke);
+  border-radius: var(--ms-form-default-radius);
+  overflow: hidden;
 
   &:has(.form-invalid) {
-    @apply border-red-600 dark:border-red-700;
+    border: 1px solid var(--ms-cm-error);
   }
 
   &:has(.CodeMirror-focused) {
-    @apply ring ring-gray-200 ring-opacity-70 dark:ring-dark-100 dark:ring-opacity-30;
+    box-shadow: 0 0 0 3px rgb(var(--ms-cm-base-stroke) / 0.7);
   }
 
   &:has(.form-invalid):has(.CodeMirror-focused) {
-    @apply ring-red-400 ring-opacity-20 dark:ring-red-600 dark:ring-opacity-40;
+    box-shadow: 0 0 0 3px rgb(var(--ms-cm-error) / 0.2);
   }
 
   & > textarea {
-    @apply absolute !block h-full w-full opacity-0;
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
   }
 
   .editor-toolbar {
-    @apply flex flex-wrap items-center gap-x-px dark:bg-dark-800 border-0 border-b border-gray-300 dark:border-dark-300;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1px;
+    border: 0;
+    border-bottom: 1px solid var(--ms-cm-base-stroke);
+    background-color: var(--ms-cm-body);
 
-    button.active {
-      @apply border-transparent bg-primary text-white hover:border-transparent hover:bg-opacity-75 dark:hover:border-transparent;
-    }
+    button {
+      &.active {
+        border-color: transparent;
+        background-color: var(--ms-cm-base-300);
+        color: var(--ms-cm-base-text);
+      }
 
-    button:hover {
-      @apply border-gray-300 bg-transparent dark:border-dark-300;
+      &:hover {
+        border: 1px solid var(--ms-cm-base-stroke);
+        background-color: var(--ms-cm-base-300);
+      }
     }
 
     i.separator {
-      @apply border-gray-300 dark:border-dark-300;
-    }
-    &.fullscreen {
-      @apply rounded-none border-b border-solid border-gray-300 dark:border-dark-300;
+      border: 1px solid var(--ms-cm-base-stroke);
     }
   }
 
   .prose {
-    @apply max-w-full bg-white p-4 dark:bg-dark-800;
-  }
-
-  .CodeMirror {
-    @apply dark:bg-dark-800 border-none dark:bg-dark-800;
-
-    &-line {
-      @apply dark:text-white;
-    }
-
-    &-cursor {
-      @apply dark:border-white;
-    }
+    max-width: 100%;
+    background: var(--ms-cm-body);
+    padding: var(--ms-box-padding-x);
+    color: var(--ms-cm-base-text);
   }
 
   .editor-preview-side {
-    @apply dark:border-dark-300;
+    border: none;
+    border-left: 1px solid var(--ms-cm-base-300);
+    background-color: var(--ms-cm-body);
   }
 
   .editor-toolbar.fullscreen,
   .CodeMirror-fullscreen {
-    @apply z-[150];
+    z-index: 150;
+  }
+
+  .CodeMirror, .CodeMirror-fullscreen {
+    background: var(--ms-cm-body);
+    border: 0;
+  }
+
+  .CodeMirror-selected,
+  .CodeMirror-focused .CodeMirror-selected {
+    background-color: var(--ms-cm-base-500);
+  }
+
+  .CodeMirror-line {
+    color: var(--ms-cm-base-text);
+  }
+
+  .CodeMirror-cursor {
+    border: 0;
+    border-left: 1px solid var(--ms-cm-base-text);
+  }
+}
+
+[class=dark] {
+  .easyMde {
+    &:has(.CodeMirror-focused) {
+      box-shadow: 0 0 0 3px rgb(var(--ms-cm-base-stroke) / 0.3);
+    }
+
+    &:has(.form-invalid):has(.CodeMirror-focused) {
+      box-shadow: 0 0 0 3px rgb(var(--ms-cm-error) / 0.4);
+    }
+
+    .editor-toolbar {
+      background-color: var(--ms-cm-base-200);
+
+      button {
+        &.active {
+          background-color: var(--ms-cm-base-400);
+        }
+
+        &:hover {
+          background-color: var(--ms-cm-base-500);
+        }
+      }
+    }
+
+    .CodeMirror-line {
+      color: var(--ms-cm-base-text);
+    }
   }
 }
